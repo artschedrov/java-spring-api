@@ -2,7 +2,7 @@ package com.example.javaspringapi.controller;
 
 import com.example.javaspringapi.entity.UserEntity;
 import com.example.javaspringapi.exception.UserAlreadyExist;
-import com.example.javaspringapi.repository.UserRepo;
+import com.example.javaspringapi.exception.UserNotFoundException;
 import com.example.javaspringapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +28,13 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity getUsers() {
+    public ResponseEntity getOneUser(@RequestParam Long id) {
         try {
-            return  ResponseEntity.ok("Server is working");
-        } catch (Exception e) {
+            return  ResponseEntity.ok(userService.getOne(id));
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        catch (Exception e) {
             return  ResponseEntity.badRequest().body("Error");
         }
     }
