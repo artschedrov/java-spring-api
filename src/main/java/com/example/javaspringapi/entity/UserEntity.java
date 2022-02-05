@@ -1,9 +1,7 @@
 package com.example.javaspringapi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class UserEntity {
@@ -13,12 +11,23 @@ public class UserEntity {
     private String username;
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<TodoEntity> todos;
+
      public UserEntity() {
 
      }
 
     public Long getId() {
         return id;
+    }
+
+    public List<TodoEntity> getTodos() {
+        return todos;
+    }
+
+    public void setTodos(List<TodoEntity> todos) {
+        this.todos = todos;
     }
 
     public void setId(Long id) {
