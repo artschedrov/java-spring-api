@@ -1,5 +1,19 @@
 # java-spring-api
 
+Simple java spring app with Myqsl
+
+```
+javaspringapi/
+├─ controller/
+├─ service/
+├─ entity/
+├─ exception/
+├─ model/
+├─ repository/
+├─ JavaSpringApiApplication.java 
+
+```
+
 ```
 +-------------------+        +-------------------------+
 |        User       |        |           Todo          |
