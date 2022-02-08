@@ -1,6 +1,6 @@
 # java-spring-api
 
-Simple java spring app with Myqsl
+Simple java spring app with MySQL
 
 ```
 javaspringapi/
